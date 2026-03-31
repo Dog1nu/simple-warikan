@@ -12,3 +12,29 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Member {
+  id   Int    @id @default(autoincrement())
+  name String
+  paidItems Item[] @relation("payer")
+  itemMembers ItemMember[]
+}
+
+model Item {
+  id      Int    @id @default(autoincrement())
+  name    String
+  amount  Int
+  payerId Int
+  payer   Member @relation("payer", fields: [payerId], references: [id])
+  itemMembers ItemMember[]
+}
+
+model ItemMember {
+  itemId Int
+  memberId Int
+  item Item @relation(fields: [itemId], references: [id])
+  member  Member  @relation(fields: [memberId], references: [id])
+  @@id([itemId, memberId])
+}
+
+
