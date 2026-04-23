@@ -2,9 +2,13 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 const PORT = 3000
+const membersRouter = require ('./routes/members')
+const itemsRouter = require ('./routes/items')
 
 app.use(cors())
 app.use(express.json())
+app.use('/members',membersRouter)
+app.use('/items',itemsRouter)
 
 app.get('/', (req,res)=>{
   res.json({ message: 'Hello,claude!'})
