@@ -9,10 +9,10 @@ router.get('/', async (req,res) => {
     include: {
   itemMembers: {
     include: {
-      member: true
+      member: true //外部のDBにアクセスできるようにする
     }
   },
-  payer: true
+  payer: true //外部のDBにアクセスできるようにする
 }
 }) //prismaからitemテーブル取得
 
