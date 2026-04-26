@@ -11,11 +11,15 @@ function App() {
     const data = await res.json()
     setMembers(data)　//再レンダリングしてメンバーリストを更新
   }
+
+  useEffect(() => {
+    fetchMembers()
+  },[])
   return (
     <div>
       <h1>warikan app</h1>
-      <MemberForm/>
-      <MemberList/>
+      <MemberForm onAdd={fetchMembers}/>
+      <MemberList members={members}/>
     </div>
   )
 }

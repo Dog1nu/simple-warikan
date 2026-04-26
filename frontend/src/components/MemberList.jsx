@@ -1,14 +1,6 @@
 import { useState, useEffect } from 'react'
 
-function MemberList() {
-  const [members, setMembers] = useState([])
-
-  // ページ読み込み時一度だけ呼び出す
-  useEffect(() => {
-    fetch('http://localhost:3000/members')
-      .then(res => res.json())
-      .then(data => setMembers(data))
-  }, [])
+function MemberList({members}) {
 
   return (
     <div>

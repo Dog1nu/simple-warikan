@@ -1,5 +1,5 @@
 import { useState } from "react";
-function MemberForm(){
+function MemberForm({onAdd}){
   const[name, setName] = useState('')
   const  handleSubmit = async() => {
     await fetch('http://localhost:3000/members',{
@@ -8,7 +8,9 @@ function MemberForm(){
       body: JSON.stringify({name})
     })
     setName('')
-  }
+    onAdd()
+    }
+
 
   return  (
     <div>
