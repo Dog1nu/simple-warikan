@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import MemberForm from './components/MemberForm'
 import MemberList from './components/MemberList'
+import ItemForm from './components/ItemForm'
 
 
 function App() { 
@@ -20,6 +21,8 @@ function App() {
       <h1>warikan app</h1>
       <MemberForm onAdd={fetchMembers}/>
       <MemberList members={members}/>
+      <ItemForm members={members}/>
+
     </div>
   )
 }
