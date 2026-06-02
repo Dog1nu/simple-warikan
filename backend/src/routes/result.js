@@ -17,8 +17,8 @@ router.get('/', async (req,res) => {
   })  
 
   // 処理２：人数分だけ収支の配列要素を作り、０を代入
-  const balance = {}
-  const members = await prisma.member.findMany()
+  const balance = {} //配列の初期化
+  const members = await prisma.member.findMany() //全レコードを取得
   members.forEach(member => {
     balance[member.id] = 0
   })
@@ -28,7 +28,7 @@ router.get('/', async (req,res) => {
     balance[item.payerId] += item.amount //支払者に支払金額を代入
     const share = Math.round(item.amount / item.itemMembers.length) //金額÷人数の値
     item.itemMembers.forEach(itemMember =>{
-      balance[itemMember.memberId] -= share
+      balance[itemMember.memberId] -= share 
     })
   })
   

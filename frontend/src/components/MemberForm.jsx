@@ -3,7 +3,7 @@ function MemberForm({onAdd}){
   const[name, setName] = useState('')
   const  handleSubmit = async() => {
     await fetch('http://localhost:3000/members',{
-      method:'POST',
+      method:'POST', //POSTリクエストで追加時にmember追加APIをたたく
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({name})
     })

@@ -11,7 +11,6 @@ function ItemForm({onAdd , members}){
       body: JSON.stringify({ name, amount, payerId, splitMemberIds})
     })
     setName('')
-    onAdd()
     }
 
 
