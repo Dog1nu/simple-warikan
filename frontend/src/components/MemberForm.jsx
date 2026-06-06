@@ -2,6 +2,11 @@ import { useState } from "react";
 function MemberForm({onAdd}){
   const[name, setName] = useState('')
   const  handleSubmit = async() => {
+    //未入力があればアラート
+    if(!name || !amount || !payerId || splitMemberIds.length === 0){
+      alert("すべての項目を入力してください！")
+      return 
+    }
     await fetch('http://localhost:3000/members',{
       method:'POST', //POSTリクエストで追加時にmember追加APIをたたく
       headers: {'Content-Type':'application/json'},
